@@ -1,11 +1,10 @@
-import React from 'react'
+import { useContext} from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { usercontext } from '../contextfile/UserContest';
 
-const Signin = (props) => {
-    const { toggler, settoggler, users } = props;
-
-
+const Signin = () => {
+    const { toggler, settoggler, users, setusers } = useContext(usercontext)
     const { register, handleSubmit, reset } = useForm()
 
     const onsubmit = (data) => {
@@ -22,9 +21,9 @@ const Signin = (props) => {
 
 
     return (
-        <div className='  text-white  '>
-            <form onSubmit={handleSubmit(onsubmit)} className='w-[400px] text-center py-8 px-2 border rounded bg-gray-800 ' >
-                <h1 className='text-4xl mb-3'>SignIn  Form</h1>
+        <div className='  text-white py-30 px-20 '>
+            <form onSubmit={handleSubmit(onsubmit)} className='w-[400px] text-center py-8 px-2 border-none bg-gray-700 ' >
+                <h1 className='text-4xl font-bold bold mb-3'>Get Back To Same...</h1>
                 <input
                     {...register("email")}
                     type="email"
@@ -41,16 +40,18 @@ const Signin = (props) => {
                 <br />
                 <button
                     // onClick={onsubmit}
-                    className='px-4 py-2 bg-gray-900 rounded text-xl m-3'
+                    className='px-4 py-2 bg-gray-800 rounded text-xl m-3 hover:opacity-50'
                 >SignIn
                 </button>
                 <small>
-                    <p>Don'have in account?
+                    <p>Don'have an account?
                         <button
                             className='mx-3 text-red-300'
                             onClick={() => settoggler(!toggler)}
                             type='button'
-                        >SignIn</button></p>
+                        >SignUp
+                        </button>
+                        </p>
                 </small>
             </form>
         </div>
